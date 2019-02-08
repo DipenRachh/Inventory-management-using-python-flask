@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title%}
+		<title>Inventory {{title}}</title>
+	{% else %}
+		<title>Inventory</title>
+	{% endif %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><b>Inventory System</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" class="home" href="/home">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" class="Product" href="/Product">Product</a>
+      <a class="nav-item nav-link" href="/Location">Location</a>
+      <a class="nav-item nav-link" href="/ProductMovement">Product Movement</a>
+       <a class="nav-item nav-link" href="/stockbalance"><b>STOCK BALANCE</b></a>
+      
+    </div>
+  </div>
+</nav>
+</body>
+</html>

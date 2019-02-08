@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% if title%}
+		<title>Inventory {{title}}</title>
+	{% else %}
+		<title>Inventory</title>
+	{% endif %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <a class="navbar-brand" href="#"><b>Inventory System</b></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			    <div class="navbar-nav">
+			      <a class="nav-item nav-link" href="/home">Home</a>
+			      <a class="nav-item nav-link " href="/Product">Product </a>
+			      <a class="nav-item nav-link active" href="/Location">Location	<span class="sr-only">(current)</span></a>
+			      <a class="nav-item nav-link" href="/ProductMovement">Product Movement</a>     
+			    </div>
+			  </div>
+			</nav>
+  </br>
+<div class="container">
+  <h2>Location Information</h2>
+<div class="float-md-right">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ADD Location</button></div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD Location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="col-md-4"/> 
+        <form class="form-group" action = "{{ url_for('addlocation') }}" method = "POST">
+            <div class="form-group">
+              Name 
+               <input class="form-group" type="text" name="ln" placeholder="location Name" id="l_name" required>
+            </div>
+            
+      </div>
+      <div class="modal-footer">
+        <input class="btn btn-success" class="form-control"  type="Submit" value="Submit" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </form></div>
+  </form>
+  </div> 
+ </div> 
+
+ </br>
+</br>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-info">Location id</th>
+        <th class="text-info">Location name</th>
+        <th class="text-success">Edit</th>
+        <th class="text-danger">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for row in rows %}
+            <tr>
+               <td>{{row["locationID"]}}</td>
+               <td>{{row["locationName"]}}</td>	
+               <td>
+                    <a><button class="btn btn-primary" OnClick='showModal({{row["locationID"]}},"{{row["locationName"]}}");'>Edit</button></a></td>
+                       <td> <a href='deletelocation/{{row["locationID"]}}'><button class="btn btn-danger">Delete</button></a>
+                     </td> 
+               
+            </tr>
+         {% endfor %}
+    </tbody>
+  </table>
+</div>
+	<div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      
+         <!-- Modal Header -->
+         <div class="modal-header">
+            <h4 class="modal-title">Edit Location</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         
+         <!-- Modal body -->
+         <div class="modal-body">
+            <form class="form-group"  action = "{{ url_for('editlocation') }}" method = "POST">
+               <div class="form-group">
+                  <input type="text" readonly class="form-control-plaintext  form-control-lg" name="locationID" id="locationID" style="display: none;" value="00">
+               </div>
+               <div class="form-group">
+                  <label for="NEWLocationName" class="sr-only"></label>
+                  <input class="form-control form-control-lg" type="text" name="NEWLocationName" placeholder="New Location Name" id="NEWLocationName" required>
+               </div>
+              
+               <button type="submit" class="btn btn-success mb-2 font-weight-bold">EDIT PRODUCT</button>
+            </form>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+</body>
+</html>
+ <script type="text/javascript">
+  
+    function showModal(id,oldname,oldlname){
+            $('#locationID').val(id);   
+            $('#NEWLocationName').val(oldlname);
+            $('#myModal').modal('toggle');
+         }
+   </script>
+ 
