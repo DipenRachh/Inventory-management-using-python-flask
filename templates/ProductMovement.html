@@ -13,7 +13,7 @@
 </head>
 <body>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			  <a class="navbar-brand" href="#"><b>Inventory System</b></a>
+			  <a class="navbar-brand" href="#"><b>Inventory Management System</b></a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
 			  </button>
@@ -45,23 +45,33 @@
             <div class="col-md-4"/> 
         <form class="form-group" action = "{{ url_for('addProductMovement') }}" method = "POST">
             <div class="form-group">
-              Name 
+              <label for="productName">Name</label> 
                <input class="form-group" type="text" name="pn" placeholder="Product Name" id="p_name" required>
             </div>
              <div class="form-group">
-              Date Time
+              <label for="datetime">Date Time</label>
                <input class="form-group" type="text" name="datetime" placeholder="Date_Time" id="Date_Time" required>
             </div>
              <div class="form-group">
-              From Location
-               <input class="form-group" type="text" name="fromlocation" placeholder="fromlocation" id="f_location" required>
-            </div>
+                  <label for="fromlocation">From Location</label>
+                  <select class="form-control" name = "fromlocation" id="fromlocation" required>
+                     <option value='- '>[Move In]</option>
+                     {% for lr in locationRows %}
+                     <option value='{{lr["locationName"]}}'>{{lr["locationName"]}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
              <div class="form-group">
-              To Location
-               <input class="form-group" type="text" name="tolocation" placeholder="tolocation" id="t_location" required>
-            </div>
+                  <label for="tolocation">To Location</label>
+                  <select class="form-control" name = "tolocation" id="tolocation" required>
+                     <option value='- '>[Move Out]</option>
+                     {% for lr in locationRows %}
+                     <option value='{{lr["locationName"]}}'>{{lr["locationName"]}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
              <div class="form-group">
-              QTY 
+               <label for="Qty">Qty</label>
                <input class="form-group" type="text" name="pq" placeholder="Product QTY" id="P_QTY" required>
             </div>
       </div>
