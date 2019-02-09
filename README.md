@@ -12,7 +12,11 @@ In this Application customer can view Product, Location ,Product Movement and Ba
 	$ flask run
 	Now Application are run on this localhost = http://127.0.0.1:5000/
 #Show the Pictures in screenshots folder for this Application how its Look 
-        FOR Product page images names is - Productpage.png,ADD product.png and EDIT product.png,
+        FOR Product page images names is - Productpage.png,ADD product.png and EDIT product.png
+	Location page images - Locationpage.png,ADD location,EDIT location.png
+	Product_Movement page images - Product Movement.png,ADD Product movement.png,edit product movement
+	Home Page-homepage.png,stock Balance
+	
 	
 	
 	
